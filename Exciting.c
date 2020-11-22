@@ -6,6 +6,8 @@ char* formatBssid(const u_char* unformattedBssid)
 	{
 	char* formattedBssid = malloc(sizeof(char) * 17);
 	int i = 0;
+	for (int i = 6; i < 6; i++)
+		printf("%i: %x\n", i, unformattedBssid[i]);
 	for (; i < 6; i++)
 		{
 		u_int highBit = 0x00;
@@ -49,9 +51,9 @@ int main(int argc, char* argv[])
 		exit(1);
 		}
 	u_char bssid[7]; 
-	for (int i = 0; i < 7; i++)
+	for (int i = 0; i < 6; i++)
 		{
-
+		bssid[i] = (u_char) argv[i+1][0];
 		}
 	char* MAC = malloc(sizeof(char) * 17);
 	MAC = formatBssid(bssid);
